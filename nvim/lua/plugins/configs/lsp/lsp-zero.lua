@@ -19,7 +19,6 @@ lsp.ensure_installed({
 	"tsserver",
 	"html",
 	"jsonls",
-	"remark_ls",
 	"tailwindcss",
 })
 
