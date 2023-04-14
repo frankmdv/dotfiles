@@ -101,16 +101,6 @@ return packer.startup(function(use)
 	})
 	use("williamboman/mason-lspconfig.nvim")
 
-	-- LSP-zero
-	use({
-		"VonHeikemen/lsp-zero.nvim", -- Branch on which you get updates
-
-		branch = "v2.x",
-		config = function()
-			require("plugins.configs.lsp.lsp-zero")
-		end,
-	})
-
 	-- Snippets
 	use("L3MON4D3/LuaSnip")
 	use("rafamadriz/friendly-snippets")
@@ -127,6 +117,16 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-path")
 	use("saadparwaiz1/cmp_luasnip")
 	use("hrsh7th/cmp-nvim-lua")
+
+	-- LSP-zero
+	use({
+		"VonHeikemen/lsp-zero.nvim", -- Branch on which you get updates
+
+		branch = "v2.x",
+		config = function()
+			require("plugins.configs.lsp.lsp-zero")
+		end,
+	})
 
 	-- null-ls
 	use({

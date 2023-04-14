@@ -55,8 +55,8 @@ cmp.setup({
 			-- Menu symbols
 			item.menu = ({
 				nvim_lsp = "[LSP]",
-				luasnip = "[Snip]",
-				buffer = "[Buff]",
+				luasnip = "[LuaSnip]",
+				buffer = "[Buffer]",
 				path = "[Path]",
 			})[entry.source.name]
 
