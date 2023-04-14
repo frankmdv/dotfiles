@@ -58,6 +58,7 @@ cmp.setup({
 				luasnip = "[LuaSnip]",
 				buffer = "[Buffer]",
 				path = "[Path]",
+				nvim_lua = "[Lua]",
 			})[entry.source.name]
 
 			return item
