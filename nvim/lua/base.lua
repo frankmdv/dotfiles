@@ -9,7 +9,6 @@ g.loaded_netrwPlugin = 1
 g.diagnostic_icons = { error = "✘", warn = "▲", hint = "⚑", info = "»" }
 
 -- Neovim options
-
 opt.number = true -- Activates sidebar with line numbers
 opt.relativenumber = true -- The line numbers become relative to the current line
 opt.cursorline = true -- Activates the cursor line
