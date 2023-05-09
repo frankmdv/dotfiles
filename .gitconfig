@@ -1,0 +1,8 @@
+[user]
+	name = Frank Diaz
+	email = francito_03@hotmail.com
+[maintenance]
+	repo = /home/frankmdv/.config/zsh/znap/zsh-autocomplete
+	repo = /home/frankmdv/.config/zsh/znap/zsh-snap
+[init]
+	defaultBranch = main
