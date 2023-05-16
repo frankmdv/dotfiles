@@ -4,11 +4,12 @@ from .keys import mod, keys
 
 
 # Qtile groups
+# Icon: , Name: nf-cod-debug_breakpoint_data
 groups = [
     Group(name=str(num), label=icon) for num, icon in [(n, "") for n in range(1, 7)]
 ]
 
-# Groups keys
+# Group keys
 for group in groups:
     keys.extend(
         [

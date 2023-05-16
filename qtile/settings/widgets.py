@@ -24,16 +24,17 @@ def workspaces(
     )
 
 
-def window_name(max_chars=20, **kwargs):
-    return wg.WindowName(max_chars=max_chars, **kwargs)
+# Disused widgets:
+
+# def window_name(max_chars=20, **kwargs):
+#     return wg.WindowName(max_chars=max_chars, **kwargs)
+
+# def layout_icon(scale=0.6, padding=1):
+#     return wg.CurrentLayoutIcon(scale=scale, padding=padding)
 
 
 def clock(format="%I:%M %p"):
     return wg.Clock(format=format)
-
-
-# def layout_icon(scale=0.6, padding=1):
-#     return wg.CurrentLayoutIcon(scale=scale, padding=padding)
 
 
 def icon(graphic="?", foreground=colors["text"], **kwargs):
@@ -62,6 +63,10 @@ def check_updates(
 
 def cpu(format="{load_percent}%", **kwargs):
     return wg.CPU(format=format, **kwargs)
+
+
+def window_count(show_zero=True):
+    return wg.WindowCount(show_zero=show_zero)
 
 
 def systray(background=colors["systray"]):
