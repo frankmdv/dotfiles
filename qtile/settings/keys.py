@@ -1,5 +1,3 @@
-# Qtile keybindings
-
 from libqtile.config import Key
 from libqtile.command import lazy
 
@@ -40,16 +38,15 @@ keys = [
         # Window Nav
         ([mod, "shift"], "m", lazy.spawn("rofi -show")),
         # Browser
-        ([mod], "b", lazy.spawn("vivaldi-snapshot")),
+        ([mod], "b", lazy.spawn("vivaldi-stable")),
         # File Explorer
         ([mod], "t", lazy.spawn("thunar")),
         # Terminal
         ([mod], "Return", lazy.spawn("kitty")),
         # Shutdown host
-        ([mod], "s", lazy.spawn("shutdown now")),
-        # Redshift
-        # ([mod], "r", lazy.spawn("redshift -O 2400")),
-        # ([mod, "shift"], "r", lazy.spawn("redshift -x")),
+        ([mod, "shift"], "s", lazy.spawn("shutdown now")),
+        # Reboot host
+        ([mod, "shift"], "r", lazy.spawn("reboot")),
         # Screenshot
         ([mod], "Print", lazy.spawn("scrot")),
         ([mod, "shift"], "Print", lazy.spawn("scrot -s")),

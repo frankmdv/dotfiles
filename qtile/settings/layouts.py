@@ -1,24 +1,27 @@
-from libqtile import layout
 from libqtile.config import Match
+from libqtile import layout
 from .theme import colors
 
 # Layouts and layout rules
 
-
-layout_conf = {"border_focus": colors["focus"][0], "border_width": 1, "margin": 4}
+layout_conf = {
+    "border_focus": colors["focus"],
+    "border_width": 1,
+    "margin": 4,
+}
 
 layouts = [
     layout.Max(),
-    layout.MonadTall(**layout_conf),
-    layout.MonadWide(**layout_conf),
-    layout.Bsp(**layout_conf),
-    layout.Matrix(columns=2, **layout_conf),
-    layout.RatioTile(**layout_conf),
-    # layout.Columns(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    layout.Bsp(border_on_single=True, **layout_conf),
+    *[
+        ly(**layout_conf)
+        for ly in [
+            layout.MonadTall,
+            layout.MonadWide,
+            layout.Matrix,
+            layout.RatioTile,
+        ]
+    ],
 ]
 
 floating_layout = layout.Floating(
@@ -31,5 +34,5 @@ floating_layout = layout.Floating(
         Match(title="branchdialog"),
         Match(title="pinentry"),
     ],
-    border_focus=colors["color4"][0],
+    border_focus=colors["focus"],
 )

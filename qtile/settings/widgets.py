@@ -1,102 +1,77 @@
-from libqtile import widget
+from libqtile import widget as wg
 from .theme import colors
 
-# Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
 
-
-def base(fg="text", bg="dark"):
-    return {"foreground": colors[fg], "background": colors[bg]}
-
-
-def separator():
-    return widget.Sep(**base(), linewidth=0, padding=5)
-
-
-def icon(fg="text", bg="dark", fontsize=18, text="?"):
-    return widget.TextBox(**base(fg, bg), fontsize=fontsize, text=text, padding=3)
-
-
-def powerline(fg="light", bg="dark"):
-    return widget.TextBox(
-        **base(fg, bg), text="", fontsize=37, padding=0  # Icon: nf-oct-triangle_left
+def workspaces(
+    highlight_method="text",
+    fontsize=20,
+    active=colors["active"],
+    inactive=colors["inactive"],
+    this_current_screen_border=colors["focus"],
+    urgent_alert_method="text",
+    urgent_text=colors["urgent"],
+    **kwargs
+):
+    return wg.GroupBox(
+        highlight_method=highlight_method,
+        fontsize=fontsize,
+        active=active,
+        inactive=inactive,
+        this_current_screen_border=this_current_screen_border,
+        urgent_alert_method=urgent_alert_method,
+        urgent_text=urgent_text,
+        **kwargs
     )
 
 
-def workspaces():
-    return [
-        separator(),
-        widget.GroupBox(
-            **base(fg="light"),
-            font="UbuntuMono Nerd Font",
-            fontsize=18,
-            margin_y=3,
-            margin_x=0,
-            padding_y=8,
-            padding_x=5,
-            borderwidth=1,
-            active=colors["active"],
-            inactive=colors["inactive"],
-            rounded=False,
-            highlight_method="block",
-            urgent_alert_method="block",
-            urgent_border=colors["urgent"],
-            this_current_screen_border=colors["focus"],
-            this_screen_border=colors["grey"],
-            other_current_screen_border=colors["dark"],
-            other_screen_border=colors["dark"],
-            disable_drag=True
-        ),
-        separator(),
-        widget.WindowName(**base(fg="focus"), fontsize=14, padding=5),
-        separator(),
-    ]
+def window_name(max_chars=20, **kwargs):
+    return wg.WindowName(max_chars=max_chars, **kwargs)
 
 
-def primary_widgets():
-    return [
-        *workspaces(),
-        separator(),
-        powerline("color4", "dark"),
-        icon(bg="color4", text=" "),  # Icon: nf-fa-download
-        widget.CheckUpdates(
-            background=colors["color4"],
-            colour_have_updates=colors["text"],
-            colour_no_updates=colors["text"],
-            no_update_string="0",
-            display_format="{updates}",
-            update_interval=1800,
-            custom_command="checkupdates",
-        ),
-        powerline("color3", "color4"),
-        icon(bg="color3", text=" "),  # Icon: nf-fa-feed
-        widget.Net(**base(bg="color3"), interface="wlo1"),
-        powerline("color2", "color3"),
-        widget.CurrentLayoutIcon(**base(bg="color2"), scale=0.65),
-        widget.CurrentLayout(**base(bg="color2"), padding=5),
-        powerline("color1", "color2"),
-        icon(bg="color1", fontsize=17, text="󰃰 "),  # Icon: nf-mdi-calendar_clock
-        widget.Clock(**base(bg="color1"), format="%d/%m/%Y - %I:%M "),
-        powerline("dark", "color1"),
-        widget.Systray(background=colors["dark"], padding=5),
-    ]
+def clock(format="%I:%M %p"):
+    return wg.Clock(format=format)
 
 
-def secondary_widgets():
-    return [
-        *workspaces(),
-        separator(),
-        powerline("color1", "dark"),
-        widget.CurrentLayoutIcon(**base(bg="color1"), scale=0.65),
-        widget.CurrentLayout(**base(bg="color1"), padding=5),
-        powerline("color2", "color1"),
-        widget.Clock(**base(bg="color2"), format="%d/%m/%Y - %I:%M "),
-        powerline("dark", "color2"),
-    ]
+# def layout_icon(scale=0.6, padding=1):
+#     return wg.CurrentLayoutIcon(scale=scale, padding=padding)
+
+
+def icon(graphic="?", foreground=colors["text"], **kwargs):
+    return wg.TextBox(text=graphic, foreground=foreground, **kwargs)
+
+
+def check_updates(
+    colour_have_updates=colors["text"],
+    colour_no_updates=colors["text"],
+    no_update_string="0",
+    display_format="{updates}",
+    update_interval=1800,
+    custom_command="checkupdates",
+    **kwargs
+):
+    return wg.CheckUpdates(
+        colour_have_updates=colour_have_updates,
+        colour_no_updates=colour_no_updates,
+        no_update_string=no_update_string,
+        display_format=display_format,
+        update_interval=update_interval,
+        custom_command=custom_command,
+        **kwargs
+    )
+
+
+def cpu(format="{load_percent}%", **kwargs):
+    return wg.CPU(format=format, **kwargs)
+
+
+def systray(background=colors["systray"]):
+    return wg.Systray(background=background)
 
 
 widget_defaults = {
-    "font": "UbuntuMono Nerd Font Bold",
+    "font": "JetBrains Mono Bold",
     "fontsize": 14,
-    "padding": 1,
+    "foreground": colors["text"],
 }
+
 extension_defaults = widget_defaults.copy()

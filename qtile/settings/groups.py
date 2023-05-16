@@ -1,26 +1,20 @@
-from libqtile.config import Key, Group
+from libqtile.config import Group, Key
 from libqtile.command import lazy
 from .keys import mod, keys
 
+
+# Qtile groups
 groups = [
-    Group(i)
-    for i in [
-        "   ",
-        "   ",
-        "   ",
-        "   ",
-        "   ",
-        "   ",
-    ]
+    Group(name=str(num), label=icon) for num, icon in [(n, "") for n in range(1, 7)]
 ]
 
-for i, group in enumerate(groups):
-    actual_key = str(i + 1)
+# Groups keys
+for group in groups:
     keys.extend(
         [
             # Switch to workspace N
-            Key([mod], actual_key, lazy.group[group.name].toscreen()),
+            Key([mod], group.name, lazy.group[group.name].toscreen()),
             # Send window to workspace N
-            Key([mod, "shift"], actual_key, lazy.window.togroup(group.name)),
+            Key([mod, "shift"], group.name, lazy.window.togroup(group.name)),
         ]
     )
