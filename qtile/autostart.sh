@@ -22,4 +22,12 @@ picom --no-vsync &
 # feh --bg-scale ~/Images/wallpapers/detresNord_1920.jpg --bg-scale ~/Images/wallpapers/detresNord_1920.jpg --bg-fill ~/Images/wallpapers/detresNord_1680.jpg
 
 # Sincronizar reloj
-timedatectl set-ntp 1
+# timedatectl set-ntp 1
+
+# Monitors configuration
+if [ $(xrandr | grep -c " connected") -gt 1 ]; then
+	setxkbmap -layout us -variant intl
+	# feh --bg-scale ~/Images/wallpapers/detresNord_1920.jpg --bg-scale ~/Images/wallpapers/detresNord_1920.jpg --bg-fill ~/Images/wallpapers/detresNord_1680.jpg
+else
+	setxkbmap latam
+fi
