@@ -1,19 +1,19 @@
 #!/bin/sh
 
 # Disk
-udiskie -t &
+# udiskie -t &
 
 #Network
 nm-applet &
 
 # Bluetooth
-blueman-applet &
+# blueman-applet &
 
 # systray battery icon
 # cbatticon -u 5 &
 
 # systray volume
-volumeicon &
+# volumeicon &
 
 # Compositor
 picom --no-vsync &
