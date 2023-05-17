@@ -2,7 +2,6 @@
   "dark": "#2D353B",
   "text": "#D3C6AA",
   "focus": "#A7C080",
-  "unfocus": "#E69875",
   "active": "#7FBBB3",
   "inactive": "#425047",
   "urgent": "#E67E80",
