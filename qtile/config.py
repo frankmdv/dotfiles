@@ -1,5 +1,3 @@
-from libqtile import hook
-
 from settings import hooks
 from settings import keys, mouse, groups, screens
 from settings import layouts, floating_layout

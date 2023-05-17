@@ -7,7 +7,7 @@
 nm-applet &
 
 # Bluetooth
-# blueman-applet &
+blueman-applet &
 
 # systray battery icon
 # cbatticon -u 5 &
