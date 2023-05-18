@@ -87,4 +87,4 @@ lsp.format_on_save({
 -- 	end,
 -- })
 
-lsp.setup()
+	lsp.setup()
