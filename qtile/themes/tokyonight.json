@@ -2,8 +2,8 @@
   "dark": "#222436",
   "text": "#82aaff",
   "focus": "#FFFFFF",
-  "active": "#CF616C",
+  "active": "#4ed1bb",
   "inactive": "#425047",
   "urgent": "#fb8500",
-  "systray": "#4ed1bb"
+  "systray": "#CF616C"
 }
