@@ -44,19 +44,19 @@ def icon(graphic="?", foreground=colors["text"], **kwargs):
 def check_updates(
     colour_have_updates=colors["text"],
     colour_no_updates=colors["text"],
-    no_update_string="0",
     display_format="{updates}",
+    custom_command="checkupdates",  # For this command to work, the pacman-contrib package must be installed on the system.
+    no_update_string="0",
     update_interval=1800,
-    custom_command="checkupdates",
     **kwargs
 ):
     return wg.CheckUpdates(
         colour_have_updates=colour_have_updates,
         colour_no_updates=colour_no_updates,
-        no_update_string=no_update_string,
         display_format=display_format,
-        update_interval=update_interval,
         custom_command=custom_command,
+        no_update_string=no_update_string,
+        update_interval=update_interval,
         **kwargs
     )
 

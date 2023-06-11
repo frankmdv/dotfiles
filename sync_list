@@ -1,0 +1,10 @@
+# List of directories and files to be synchronized by the program: https://github.com/abraunegg/onedrive
+# This file must exist in the path: ~/.config/onedrive
+
+# Exclude
+!/duppit/obsidian/.obsidian
+!/duppit/obsidian/.trash
+!/pictures/*
+
+# Include
+/*
