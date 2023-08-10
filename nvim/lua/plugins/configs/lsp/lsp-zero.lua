@@ -5,12 +5,14 @@ local lsp = require("lsp-zero").preset({
 })
 
 -- Diagnostic icons are established
-local sign_icons = vim.g.diagnostic_icons
-for type, icon in pairs(sign_icons) do
-	sign_icons[type] = " " .. icon
-end
+-- local sign_icons = vim.g.diagnostic_icons
+-- for type, icon in pairs(sign_icons) do
+-- 	sign_icons[type] = " " .. icon
+-- end
+--
+-- lsp.set_sign_icons(sign_icons)
 
-lsp.set_sign_icons(sign_icons)
+lsp.set_sign_icons(vim.g.diagnostic_icons)
 
 -- Mason LSP Servers
 lsp.ensure_installed({
@@ -87,4 +89,4 @@ lsp.format_on_save({
 -- 	end,
 -- })
 
-	lsp.setup()
+lsp.setup()

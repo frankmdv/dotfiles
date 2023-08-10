@@ -10,7 +10,7 @@ nm-applet &
 blueman-applet &
 
 # systray battery icon
-# cbatticon -u 5 &
+cbatticon &
 
 # systray volume
 # volumeicon &

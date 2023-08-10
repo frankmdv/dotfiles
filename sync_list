@@ -2,9 +2,11 @@
 # This file must exist in the path: ~/.config/onedrive
 
 # Exclude
-!/duppit/obsidian/.obsidian
-!/duppit/obsidian/.trash
 !/pictures/*
+!venv/*
+!node_modules/*
+!__pycache__/*
+!/onenote_blocs/*
 
 # Include
 /*
