@@ -10,6 +10,7 @@ def workspaces(
     this_current_screen_border=colors["focus"],
     urgent_alert_method="text",
     urgent_text=colors["urgent"],
+    disable_drag=True,
     **kwargs
 ):
     return wg.GroupBox(
@@ -20,6 +21,7 @@ def workspaces(
         this_current_screen_border=this_current_screen_border,
         urgent_alert_method=urgent_alert_method,
         urgent_text=urgent_text,
+        disable_drag=disable_drag,
         **kwargs
     )
 
