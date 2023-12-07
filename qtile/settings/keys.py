@@ -4,15 +4,15 @@ from libqtile.command import lazy
 mod = "mod4"
 
 keys = [
-    Key(key[0], key[1], *key[2:])
+    Key(*key)
     for key in [
-        # ------------ Window Configs ------------
+        # ------------ Window Keys------------
         # Switch between windows in current stack pane
         ([mod], "j", lazy.layout.down()),
         ([mod], "k", lazy.layout.up()),
         ([mod], "h", lazy.layout.left()),
         ([mod], "l", lazy.layout.right()),
-        # Change window sizes (MonadTall)
+        # Change window sizes (supported for monadtall or monadwide layout)
         ([mod, "shift"], "h", lazy.layout.grow()),
         ([mod, "shift"], "l", lazy.layout.shrink()),
         # Toggle floating
@@ -32,13 +32,13 @@ keys = [
         ([mod, "control"], "r", lazy.restart()),
         ([mod, "control"], "q", lazy.shutdown()),
         ([mod], "r", lazy.spawncmd()),
-        # ------------ App Configs ------------
+        # ------------ App Keys------------
         # Menu
         ([mod], "m", lazy.spawn("rofi -show drun")),
         # Window Nav
         ([mod, "shift"], "m", lazy.spawn("rofi -show")),
         # Browser
-        ([mod], "b", lazy.spawn("vivaldi-stable")),
+        ([mod], "b", lazy.spawn("vivaldi")),
         # File Explorer
         ([mod], "t", lazy.spawn("thunar")),
         # Terminal
@@ -50,7 +50,7 @@ keys = [
         # Screenshot
         ([mod], "Print", lazy.spawn("scrot")),
         ([mod, "shift"], "Print", lazy.spawn("scrot -s")),
-        # ------------ Hardware Configs ------------
+        # ------------ Hardware Keys ------------
         # Volume
         (
             [],
