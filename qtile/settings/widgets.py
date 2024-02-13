@@ -26,15 +26,6 @@ def workspaces(
     )
 
 
-# Disused widgets:
-
-# def window_name(max_chars=20, **kwargs):
-#     return wg.WindowName(max_chars=max_chars, **kwargs)
-
-# def layout_icon(scale=0.6, padding=1):
-#     return wg.CurrentLayoutIcon(scale=scale, padding=padding)
-
-
 def clock(format="%I:%M %p"):
     return wg.Clock(format=format)
 
