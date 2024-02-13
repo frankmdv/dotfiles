@@ -1,0 +1,9 @@
+{
+  "dark": "#161616",
+  "text": "#F2F4F8",
+  "focus": "#A985E2",
+  "active": "#25BE6A",
+  "inactive": "#535353",
+  "urgent": "#EE5396",
+  "systray": "#7EA6E8"
+}
