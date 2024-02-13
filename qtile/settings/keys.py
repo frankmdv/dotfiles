@@ -38,7 +38,7 @@ keys = [
         # Window Nav
         ([mod, "shift"], "m", lazy.spawn("rofi -show")),
         # Browser
-        ([mod], "b", lazy.spawn("vivaldi")),
+        ([mod], "b", lazy.spawn("firefox")),
         # File Explorer
         ([mod], "t", lazy.spawn("thunar")),
         # Terminal
