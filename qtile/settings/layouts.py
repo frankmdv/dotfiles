@@ -24,6 +24,10 @@ layouts = [
     ],
 ]
 
+
+# Discord was added to the no_reposition_rules. This was done because, when
+# opening the loading popup window, it was incorrectly centered on screens other
+# than the main screen.
 floating_layout = layout.Floating(
     float_rules=[
         *layout.Floating.default_float_rules,
@@ -33,6 +37,9 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),
         Match(title="branchdialog"),
         Match(title="pinentry"),
+    ],
+    no_reposition_rules=[
+        Match(wm_class="discord"),
     ],
     border_focus=colors["focus"],
 )
