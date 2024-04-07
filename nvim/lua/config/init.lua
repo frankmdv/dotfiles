@@ -1,5 +1,5 @@
-local require_modules = { "options", "keymaps", "autocmds", "lazy" }
+local modules = { "options", "keymaps", "autocmds", "lazy" }
 
-for _, m in ipairs(require_modules) do
+for _, m in ipairs(modules) do
 	require("config." .. m)
 end

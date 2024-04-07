@@ -1,7 +1,10 @@
+-- This module contains plugins that provide new features, functions and
+-- visual aspects to the Neovim graphical interface.
+
 return {
-  --[[
-    ||COLORSCHEME||
-  ]]
+  -- Provides a color scheme that modifies both the neovim
+  -- graphical interface and the syntax highlighting colors of programming
+  -- languages.
   {
    "rmehri01/onenord.nvim",
     lazy = false,
@@ -17,14 +20,15 @@ return {
         disable = {
           background = true,
         },
-        -- overwrite highlights
         custom_highlights = {
           dark = {
-            -- Editor highlights
+            -- overwrites the display format of some of the visual elements
+            -- of the editor.
             CursorLine = { bg = colors.selection },
             IncSearch = { fg = colors.yellow, bg = colors.light_gray, style = "bold" },
           }
         },
+        -- custom theme colores are added
         custom_colors = {
           white = "#FFFFFF",
         }
@@ -34,9 +38,9 @@ return {
     end,
   },
 
-  --[[
-    ||LUALINE||
-  ]]
+  -- Adds a status bar that displays useful information such as publisher
+  -- status, Git version control data, or custom information according to
+  -- the developer's needs.
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
@@ -58,17 +62,22 @@ return {
           },
           lualine_x = {
             {
+              "filetype",
+              icon_only = true,
+              padding = { right = 1 }
+            },
+            "encoding",
+            {
               "fileformat",
               symbols = {
                 unix = "unix",
                 dos = "win",
-                mac = "mac",
-              },
+                mac = "mac"
+              }
             },
-            "filetype",
           },
-          lualine_y = { "location" },
-          lualine_z = { "progress" },
+          lualine_y = { "progress" },
+          lualine_z = { "location" },
         },
         extensions = { "neo-tree", "mason", "lazy" },
       }
@@ -76,9 +85,8 @@ return {
     end
   },
 
-  --[[
-    ||BUFFERLINE||
-  ]]
+  -- Provides a top bar that allows you to view and manage the buffers
+  -- open in the current Neovim session.
   {
     "akinsho/bufferline.nvim",
     version = "*",
@@ -100,7 +108,7 @@ return {
       require("bufferline").setup(opts)
 
       -- Fixes hidden bufferline when opening a new file
-      -- via dashboard
+      -- via dashboard.
       vim.api.nvim_create_autocmd("BufAdd", {
         callback = function()
           vim.schedule(function()
@@ -111,9 +119,10 @@ return {
     end
   },
 
-  --[[
-    ||NOICE||
-  --]]
+  -- Change and enrich user interface components such as messages or
+  -- notifications, the command line and pop-up menus.
+
+  -- ¡THIS PLUGIN IS STILL IN CONFIGURATION!
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -121,6 +130,9 @@ return {
       { "<leader>m", "<cmd>Noice<cr>", desc = "Open message history" },
     },
     opts = {
+      -- INVESTIGATE WHAT IT IS USED FOR WHEN THE PLUGIN THAT ACTIVATES
+      -- THE LSP IS CORRECTLY CONFIGURED.
+      --[[
       lsp = {
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -128,6 +140,7 @@ return {
           ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
         },
       },
+      ]]
       presets = {
         bottom_search = true, -- use a classic bottom cmdline for search
         command_palette = true, -- position the cmdline and popupmenu together
@@ -148,7 +161,7 @@ return {
       local opts = {
         render = "compact",
         stages = "fade",
-        timeout = 2000,
+        timeout = 3000,
       }
 
       return opts

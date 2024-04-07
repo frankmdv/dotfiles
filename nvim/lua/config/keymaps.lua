@@ -73,6 +73,9 @@ local maps = {
 	},
 
 	-- buffers
+  -- AL TENER DOS VENTANAS EN LA MISMA SESIÓN DE NEOVIM
+  -- Y AL INTENTAR CERRAR UN BUFFER EN LA SEGUNDA VENTANA
+  -- TAMBIÉN SE CIERRA LA VENTANA. ESTO SE DEBE SOLUCIONAR!!!!
 	["<leader>bd"] = {
 		"<cmd>bd<cr>",
 		opts = {

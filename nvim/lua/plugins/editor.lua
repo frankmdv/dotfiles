@@ -4,7 +4,7 @@ return {
   --[[
     ||FLASH||
     Allows you to move the cursor quickly to words that match a set
-    pattern.
+    pattern
   ]]
   {
     "folke/flash.nvim",
@@ -92,7 +92,7 @@ return {
 
   --[[
     ||PERSISTENCE||
-     Provides the feature to manage work sessions.
+     Provides the feature to manage work sessions
   ]]
   {
     "folke/persistence.nvim",
