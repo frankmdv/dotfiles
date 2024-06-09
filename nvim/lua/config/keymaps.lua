@@ -1,168 +1,80 @@
-local maps = {
-	["<Esc>"] = {
-		":noh<CR>",
-		opts = {
-			silent = true,
-			desc = "clear highlights search",
-		},
-	},
+local utils = require("frankmdv.utils")
 
-	-- windows
-	["<C-h>"] = {
-		"<C-w>h",
-		opts = {
-			desc = "move to the left window",
-		},
-	},
-	["<C-j>"] = {
-		"<C-w>j",
-		opts = {
-			desc = "move to the window below",
-		},
-	},
-	["<C-k>"] = {
-		"<C-w>k",
-		opts = {
-			desc = "move to the top window",
-		},
-	},
-	["<C-l>"] = {
-		"<C-w>l",
-		opts = {
-			desc = "move to the rigth window",
-		},
-	},
-	["<leader>wd"] = {
-		"<C-W>c",
-		opts = {
-			desc = "delete window",
-		},
-	},
-	["<leader>wx"] = {
-		"<cmd>split<cr>",
-		opts = {
-			desc = "vertical split",
-		},
-	},
-	["<leader>wy"] = {
-		"<cmd>vsplit<cr>",
-		opts = {
-			desc = "horizontal split",
-		},
-	},
+local maps_to_create = {
+  -- windows
+  ["<leader>wd"] = {
+    "<C-W>c",
+    opts = {
+      desc = "Delete Window",
+    },
+  },
+  ["<leader>wx"] = {
+    "<cmd>split<cr>",
+    opts = {
+      desc = "Vertical Split",
+    },
+  },
+  ["<leader>wy"] = {
+    "<cmd>vsplit<cr>",
+    opts = {
+      desc = "Horizontal Split",
+    },
+  },
 
-	-- save/quit
-	["<C-s>"] = {
-		"<cmd>w<cr>",
-		modes = { "n", "i" },
-		opts = {
-			desc = "save file",
-		},
-	},
-	["<leader>q"] = {
-		"<cmd>qa<cr>",
-		opts = {
-			desc = "quit all",
-		},
-	},
-	["<leader>fq"] = {
-		"<cmd>qa!<cr>",
-		opts = {
-			desc = "force quit all",
-		},
-	},
+  -- buffers
+  ["<tab>"] = {
+    "<cmd>bn<cr>",
+    opts = {
+      desc = "Next Buffer",
+    },
+  },
+  ["<S-tab>"] = {
+    "<cmd>bp<cr>",
+    opts = {
+      desc = "Prev Buffer",
+    },
+  },
 
-	-- buffers
-  -- AL TENER DOS VENTANAS EN LA MISMA SESIÓN DE NEOVIM
-  -- Y AL INTENTAR CERRAR UN BUFFER EN LA SEGUNDA VENTANA
-  -- TAMBIÉN SE CIERRA LA VENTANA. ESTO SE DEBE SOLUCIONAR!!!!
-	["<leader>bd"] = {
-		"<cmd>bd<cr>",
-		opts = {
-			silent = true,
-			desc = "delete buffer",
-		},
-	},
-	["<tab>"] = {
-		"<cmd>bn<cr>",
-		opts = {
-			silent = true,
-			desc = "next buffer",
-		},
-	},
-	["<S-tab>"] = {
-		"<cmd>bp<cr>",
-		opts = {
-			silent = true,
-			desc = "prev buffer",
-		},
-	},
+  -- restores forward navigation in the change history
+  ["<C-i>"] = {
+    "<C-i>",
+    opts = {
+      desc = "Forward Nav In The Jump History",
+    },
+  },
 
-	-- restores forward navigation in the change history
-	["<C-i>"] = {
-		"<C-i>",
-		opts = {
-			desc = "forward nav in the jump history",
-		}
-	},
-
-	-- increment/decrement
-	["+"] = {
-		"<C-a>",
-		opts = {
-			desc = "increment a numeric value",
-		},
-	},
-	["-"] = {
-		"<C-x>",
-		opts = {
-			desc = "decrement a numeric value",
-		},
-	},
+  -- increment/decrement
+  ["+"] = {
+    "<C-a>",
+    opts = {
+      desc = "Increment Value",
+    },
+  },
+  ["-"] = {
+    "<C-x>",
+    opts = {
+      desc = "Decrement Value",
+    },
+  },
 
   -- command mode
-	[";"] = {
-		":",
-		modes = { "n", "v" },
-		opts = {
-			desc = "enter to command mode",
-		},
-	},
-
-	-- lazy
-	["<leader>l"] = {
-		"<cmd>Lazy<cr>",
-		opts = {
-			desc = "open lazy ui",
-		},
-	},
-
-	-- ui
-	["<leader>uw"] = {
-		(function()
-      local notify_record = nil
-
-      return function()
-        local wrap_state = vim.api.nvim_command_output("set wrap?")
-        local command = "nowrap"
-        local state = "disabled"
-
-        if wrap_state == "nowrap" then
-          command = "wrap"
-          state = "enabled"
-        end
-
-        vim.cmd("set " .. command)
-        notify_record = vim.notify("Wrap lines " .. state, vim.log.levels.INFO, { replace = notify_record })
-      end
-		end)(),
-		opts = {
-			desc = "wrap/nowrap",
-		},
-	}
+  [";"] = {
+    ":",
+    modes = { "n", "v" },
+    opts = {
+      desc = "Enter To Command Mode",
+    },
+  },
 }
 
-for m, props in pairs(maps) do
-	local modes = props.modes or "n"
-	vim.keymap.set(modes, m, props[1], props.opts)
-end
+local maps_to_delete = {
+  n = {
+    "<leader>w-", -- horizontal window split
+    "<leader>w|", -- vertical window split
+    "<leader><tab>]", -- next tab
+    "<leader><tab>[", -- previous tab
+  },
+}
+
+utils.create_map(maps_to_create)
+utils.delete_map(maps_to_delete)
