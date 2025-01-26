@@ -69,10 +69,6 @@ local maps_to_create = {
 
 local maps_to_delete = {
   n = {
-    "<leader>w-", -- horizontal window split
-    "<leader>-", -- horizontal window split
-    "<leader>w|", -- vertical window split
-    "<leader>|", -- vertical window split
     "<leader><tab>]", -- next tab
     "<leader><tab>[", -- previous tab
   },
